@@ -18,12 +18,12 @@ contract BasicMathTest is Test {
     //  - return "Splat" if the _number is not divisible by 3 or 5
     function test_fizzbuzz(uint256 _number) public view {
         string memory result = fizzBuzz.fizzBuzz(_number);
-        if (_number % 3 == 0) {
+        if (_number % 3 == 0 && _number % 5 == 0) {
+            assert(keccak256(abi.encodePacked(result)) == keccak256(abi.encodePacked("FizzBuzz")));
+        } else if (_number % 3 == 0) {
             assert(keccak256(abi.encodePacked(result)) == keccak256(abi.encodePacked("Fizz")));
         } else if (_number % 5 == 0) {
             assert(keccak256(abi.encodePacked(result)) == keccak256(abi.encodePacked("Buzz")));
-        } else if (_number % 3 == 0 && _number % 5 == 0) {
-            assert(keccak256(abi.encodePacked(result)) == keccak256(abi.encodePacked("FizzBuzz")));
         } else {
             assert(keccak256(abi.encodePacked(result)) == keccak256(abi.encodePacked("Splat")));
         }
