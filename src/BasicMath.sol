@@ -5,9 +5,8 @@ pragma solidity ^0.8.13;
 // @notice This contract is used to test the overflow detection
 // @author NelsonRodMar
 contract BasicMath {
-
     constructor() {}
-      
+
     // @notice This function return the sum of the two number and a boold true if overflow otherwise false
     // @param _a The first number
     // @param _b The second number
