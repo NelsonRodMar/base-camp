@@ -1,0 +1,4 @@
+RPC : https://goerli.base.org		
+BaseScan API Key : E7VGT4Q7YQQSUKFAI6KSKF6P4WZ3AJM9GX
+forge script script/BasicMath.s.sol --broadcast  --ledger --hd-paths "m/44'/60'/2'/0/0" --legacy --rpc-url  https://goerli.base.org --sender 0x770569f85346B971114e11E4Bb5F7aC776673469 --verify
+
