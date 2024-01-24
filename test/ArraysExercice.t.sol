@@ -35,20 +35,15 @@ contract ArraysExerciseTest is Test {
     }
 
     function test_afterY2K() public {
-        arraysExercise.saveTimestamp(1000); 
+        arraysExercise.saveTimestamp(1000);
         arraysExercise.saveTimestamp(946702822);
         arraysExercise.saveTimestamp(946702923);
 
         (uint256[] memory timestampsAfterY2K, address[] memory sendersAfterY2K) = arraysExercise.afterY2K();
-        /*console2.log("timestampsAfterY2K length: ", timestampsAfterY2K.length);
         assert(timestampsAfterY2K.length == 2);
-        console2.log("sendersAfterY2K length: ", sendersAfterY2K.length);
         assert(sendersAfterY2K.length == 2);
-        
-        console2.log("sendersAfterY2K[0]: ", sendersAfterY2K[0]);
+
         assert(timestampsAfterY2K[0] == 946702822);
-        console2.log("timestampsAfterY2K[1]: ", timestampsAfterY2K[1]);
-        assert(timestampsAfterY2K[1] == 9467028231);
-        */
+        assert(timestampsAfterY2K[1] == 946702923);
     }
 }

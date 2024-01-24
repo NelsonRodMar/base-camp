@@ -60,7 +60,7 @@ contract EmployeeStorage {
      * Fair warning though, if you do cheat, it will be on the blockchain having been
      * deployed by your wallet....FOREVER!
      */
-    function checkForPacking(uint _slot) public view returns (uint r) {
+    function checkForPacking(uint256 _slot) public view returns (uint256 r) {
         assembly {
             r := sload(_slot)
         }
