@@ -68,12 +68,11 @@ contract FavoriteRecords {
             }
         }
 
-
         // We can now create the array with the right size
         string[] memory userFavoritesNames = new string[](count);
         if (count != 0) {
             // And fill it with the favorites records
-            uint userFavoritesNamesCount;
+            uint256 userFavoritesNamesCount;
             for (uint256 i = 0; i < recordsNames.length; i++) {
                 if (userFavorites[_user][recordsNames[i]]) {
                     userFavoritesNames[userFavoritesNamesCount] = recordsNames[i];
@@ -82,6 +81,6 @@ contract FavoriteRecords {
             }
         }
 
-            return userFavoritesNames;
+        return userFavoritesNames;
     }
 }

@@ -60,7 +60,7 @@ contract FavoriteRecordsTest is Test {
 
         // If reset user record, should get an empty list of favorites
         favoriteRecords.resetUserFavorites();
-        string[] memory  userFavoritesReset = favoriteRecords.getUserFavorites(address(this));
+        string[] memory userFavoritesReset = favoriteRecords.getUserFavorites(address(this));
         assert(userFavoritesReset.length == 0);
     }
 
