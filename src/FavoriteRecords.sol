@@ -1,18 +1,18 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.19;
+pragma solidity ^0.8.17;
 
 // @title FavoriteRecords
 // @notice This contract is used to test the overflow detection
 // @author NelsonRodMar
 contract FavoriteRecords {
     // @notice This mapping contains the approved records
-    mapping(string record => bool isApproved) public approvedRecords;
+    mapping(string => bool) public approvedRecords;
 
     // @notice This array contains the names of all the records currently indexed
     string[] private recordsNames;
 
     // @notice This mapping contains the favorite records of each user
-    mapping(address user => mapping(string record => bool isFavorite)) public userFavorites;
+    mapping(address => mapping(string => bool)) public userFavorites;
 
     // @notice This error is thrown when the record is not approved
     error NotApproved(string record);

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.17;
 
 import {Test, console2} from "forge-std/Test.sol";
 import {UnburnableToken} from "../src/UnburnableToken.sol";
@@ -20,9 +20,9 @@ contract UnburnableTokenTest is Test {
         bytes4 selector = bytes4(keccak256("TokensClaimed()"));
         vm.expectRevert(abi.encodeWithSelector(selector));
         unburnableToken.claim();
-        
+
         // Claiming 99_999 more times should succeed
-        for (uint i = 0; i < 99_999; i++) {
+        for (uint256 i = 0; i < 99_999; i++) {
             // We impersonate new addresses everytime to error
             vm.prank(vm.addr(i + 2));
             unburnableToken.claim();
@@ -39,7 +39,6 @@ contract UnburnableTokenTest is Test {
         // Before claim some tokens
         unburnableToken.claim();
 
-        
         // Should fail if the recipient has no ETH
         bytes4 selector = bytes4(keccak256("UnsafeTransfer(address)"));
         vm.expectRevert(abi.encodeWithSelector(selector, address(1)));

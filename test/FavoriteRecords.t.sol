@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.17;
 
 import {Test, console2} from "forge-std/Test.sol";
 import {FavoriteRecords} from "../src/FavoriteRecords.sol";
@@ -25,7 +25,7 @@ contract FavoriteRecordsTest is Test {
     }
 
     // @notice Check that the records are init correctly
-    function test_init_record() public {
+    function test_init_record() public view {
         string[] memory getApprovedRecords = favoriteRecords.getApprovedRecords();
         assert(getApprovedRecords.length == recordsNamesTest.length);
         for (uint256 i = 0; i < getApprovedRecords.length; i++) {

@@ -5,10 +5,10 @@ pragma solidity ^0.8.17;
 // @author NelsonRodMar
 contract UnburnableToken {
     // @notice Balance of each user
-    mapping(address user => uint256 nbToken) public balances;
+    mapping(address => uint256) public balances;
 
     // @notice Whether a user has claimed their tokens
-    mapping(address user => bool) public hasClaimed;
+    mapping(address => bool) public hasClaimed;
 
     // @notice The total supply of tokens
     uint256 public totalSupply;

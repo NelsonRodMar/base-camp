@@ -18,7 +18,7 @@ contract AddressBook {
     uint256 private totalContacts;
 
     // @notice A mapping of contact IDs to contacts (the AddressBook)
-    mapping(uint256 id => Contact contact) public contacts;
+    mapping(uint256 => Contact) public contacts;
 
     // @notice A modifier that only allows the owner to call a function
     modifier onlyOwner() {

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.17;
 
 import {Test, console2} from "forge-std/Test.sol";
 import {WeightedVoting} from "../src/WeightedVoting.sol";
@@ -20,9 +20,9 @@ contract WeightedVotingTest is Test {
         bytes4 selector = bytes4(keccak256("TokensClaimed()"));
         vm.expectRevert(abi.encodeWithSelector(selector));
         weightedVoting.claim();
-        
+
         // Claiming 999 more times should succeed
-        for (uint i = 0; i < 9999; i++) {
+        for (uint256 i = 0; i < 9999; i++) {
             // We impersonate new addresses everytime to error
             vm.prank(vm.addr(i + 2));
             weightedVoting.claim();
@@ -30,7 +30,6 @@ contract WeightedVotingTest is Test {
 
         console2.log("Total supply: ", weightedVoting.totalSupply());
 
-        
         // Should fail on the 100th claim
         vm.prank(vm.addr(100_000_000));
         selector = bytes4(keccak256("AllTokensClaimed()"));
@@ -54,17 +53,17 @@ contract WeightedVotingTest is Test {
         selector = bytes4(keccak256("QuorumTooHigh(uint256)"));
         vm.expectRevert(abi.encodeWithSelector(selector, 1000));
         weightedVoting.createIssue("Test issue", 1000);
-        
+
         // We create the issue with a quorum of 100
         weightedVoting.createIssue("Test issue", 100);
 
         // Should fail if the user has already voted
-        weightedVoting.vote(1,WeightedVoting.Votes.For);
+        weightedVoting.vote(1, WeightedVoting.Votes.For);
 
         // Should fail if the user has already voted
         selector = bytes4(keccak256("VotingClosed()"));
         vm.expectRevert(abi.encodeWithSelector(selector));
-        weightedVoting.vote(1,WeightedVoting.Votes.For);
+        weightedVoting.vote(1, WeightedVoting.Votes.For);
 
         // The result should be 1 for, 0 against, 0 abstain  and should pass and close
         WeightedVoting.IssueView memory issue = weightedVoting.getIssue(1);
@@ -75,6 +74,5 @@ contract WeightedVotingTest is Test {
         assert(issue.quorum == 100);
         assert(issue.passed == true);
         assert(issue.closed == true);
-
     }
 }
