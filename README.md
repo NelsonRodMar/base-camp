@@ -1,6 +1,6 @@
 ## Base Camp
 
-This repository is simple repository with all my excersise answer to the [Base Camp](https://docs.base.org/base-camp/progress/) program.
+This repository is simple repository with all my excersise answer to the [Base Camp](https://docs.base.org/base-learn/progress/) program.
 
 ## Usage
 
